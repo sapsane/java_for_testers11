@@ -3,7 +3,7 @@ package ru.STQA.geometry.figures;
 public class Rectangle {
     public static void printRectangleArea(double a, double b) {
         String text = String.format(
-                "площадь прямоугольника со стронами %f и1 %f ", a , b , RectangleArea(a, b));
+                "площадь прямоугольника со стронами %f и %f=%f ", a , b , RectangleArea(a, b));
         System.out.println(text);
     }
 
