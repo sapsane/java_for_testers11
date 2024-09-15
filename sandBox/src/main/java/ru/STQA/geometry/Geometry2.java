@@ -20,7 +20,7 @@ public class Geometry2 {
      //   Triangle.printTriangleArea(new Triangle(3.0,4.0,5.0));
      //   Triangle.perimetr         (new Triangle(3.0,4.0,5.0));
         Triangle.printTrianglePerimeter(new Triangle());
-        Triangle.TriangleArea(new Triangle());
+        Triangle.printTriangleArea(new Triangle());
     }
 
 }

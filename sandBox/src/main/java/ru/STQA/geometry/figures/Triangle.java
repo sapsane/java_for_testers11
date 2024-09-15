@@ -24,7 +24,7 @@ public class Triangle {
         return a1 + b1 + c1;
     }
 */
-    public static double TriangleArea(Triangle tr2) {
+    public static double printTriangleArea(Triangle tr2) {
 
         String text = String.format(
                 "объект площадь треугольника с стороной a= %f  b= %f c= %f  S=%f", tr2.sideA, tr2.sideB, tr2.sideC  , tr2.TriangleArea());
