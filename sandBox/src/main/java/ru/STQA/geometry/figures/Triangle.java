@@ -6,7 +6,7 @@ public class Triangle {
     double sideB= 4.0;
     double sideC= 5.0;
 
-    public Triangle() {
+    public Triangle(double sideA,double sideB,double sideC) {
         this.sideA=sideA;
         this.sideB=sideB;
         this.sideC=sideC;
@@ -15,7 +15,7 @@ public class Triangle {
 
 
     public static void printTrianglePerimeter(Triangle tr1) {
-        String text2 = String.format("Объект периметр треугольника с стороной a=%f b=%f c=%f Perimetr=%f ", 3.0, 4.0,5.0, tr1.perimetr());
+        String text2 = String.format("Объект периметр треугольника с стороной a=%f b=%f c=%f Perimetr=%f ",tr1.sideA, tr1.sideB,tr1.sideC, tr1.perimetr());
         System.out.println(text2);
 
     }
