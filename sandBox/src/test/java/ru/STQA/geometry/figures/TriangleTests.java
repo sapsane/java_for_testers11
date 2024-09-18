@@ -7,11 +7,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TriangleTests {
     @Test
     void canCalculateArea(){
-        var s = new Triangle(3.0,4.0,5.0);
+        var s = new Triangle();
+        s.sideA=3;
+        s.sideB=4;
+        s.sideC=5;
         assertEquals(6.0, s.TriangleArea());
     }
     @Test
     void canCalculatePerimetr(){
-        assertEquals(12.0, new Triangle(3.0,4.0,5.0).perimetr());
+        var s2 = new Triangle();
+        s2.sideA=3;
+        s2.sideB=4;
+        s2.sideC=5;
+        assertEquals(12.0, s2.perimetr());
     }
 }
