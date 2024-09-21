@@ -7,17 +7,16 @@ public class Triangle {
     double sideC;
 
     public Triangle() {
-
+        this.sideA=3.0;
+        this.sideB=4.0;
+        this.sideC=5.0;
 
            }
 
 
     public static void printTrianglePerimeter(Triangle tr1) {
-        Triangle myTriangle=new Triangle();
-        myTriangle.sideA=3;
-        myTriangle.sideB=4;
-        myTriangle.sideC=5;
-        String text2 = String.format("Объект периметр треугольника с стороной a=%f b=%f c=%f Perimetr=%f ",myTriangle.sideA, myTriangle.sideB,myTriangle.sideC, myTriangle.perimetr());
+
+        String text2 = String.format("Объект периметр треугольника с стороной a=%f b=%f c=%f Perimetr=%f ",tr1.sideA, tr1.sideB,tr1.sideC, tr1.perimetr());
         System.out.println(text2);
 
     }
@@ -27,12 +26,9 @@ public class Triangle {
     }
 */
     public static void printTriangleArea(Triangle tr2) {
-        Triangle myTriangle=new Triangle();
-        myTriangle.sideA=3;
-        myTriangle.sideB=4;
-        myTriangle.sideC=5;
+
         String text = String.format(
-                "объект площадь треугольника с стороной a= %f  b= %f c= %f  S=%f", myTriangle.sideA, myTriangle.sideB, myTriangle.sideC  , myTriangle.TriangleArea());
+                "объект площадь треугольника с стороной a= %f  b= %f c= %f  S=%f", tr2.sideA, tr2.sideB, tr2.sideC  , tr2.TriangleArea());
         System.out.println(text);
 
     }
