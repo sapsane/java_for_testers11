@@ -40,4 +40,18 @@ public class TriangleTests {
 
 
     }
+    @Test
+    void testEquality(){
+        var tr1= new Triangle();
+        tr1.sideA=3;
+        tr1.sideB=4;
+        tr1.sideC=5;
+
+        var tr2= new Triangle();
+        tr2.sideA=4;
+        tr2.sideB=5;
+        tr2.sideC=3;
+
+    Assertions.assertEquals(tr1,tr2);
+    }
 }
