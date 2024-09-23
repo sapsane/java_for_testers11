@@ -10,8 +10,14 @@ public class Triangle {
         this.sideA=3.0;
         this.sideB=4.0;
         this.sideC=5.0;
+    if (sideA < 0 ||sideB < 0 || sideC <0) {
+        throw new IllegalArgumentException("сторона стреугольника не должна быть  меньше 0 нуля");
+    }
+    if (((sideA + sideB) < (sideC)) || ((sideB + sideC) < (sideA)) || ((sideA + sideC) < (sideB)) ){
+        throw new IllegalArgumentException("ошибка!!! сумма двух строн должна быть больше третьей стороны");
+    }
 
-           }
+    }
 
 
     public static void printTrianglePerimeter(Triangle tr1) {
