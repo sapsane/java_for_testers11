@@ -8,10 +8,10 @@ public class Triangle {
     double sideB;
     double sideC;
 
-    public Triangle() {
-        this.sideA=3.0;
-        this.sideB=4.0;
-        this.sideC=5.0;
+    public  Triangle(double sideA,double sideB, double sideC) {
+        this.sideA=sideA;
+        this.sideB=sideB;
+        this.sideC=sideC;
     if (sideA < 0 ||sideB < 0 || sideC <0) {
         throw new IllegalArgumentException("сторона стреугольника не должна быть  меньше 0 нуля");
     }
