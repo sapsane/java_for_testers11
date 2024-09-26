@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$/adderssBookWebTests">
       <excludeFolder url="file://$MODULE_DIR$/adderssBookWebTests/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/adderssBookWebTests/build" />
+      <excludeFolder url="file://$MODULE_DIR$/adderssBookWebTests/out" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
