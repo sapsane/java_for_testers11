@@ -9,18 +9,18 @@ public class GroupHelper extends HelperBase {
         super(manager);
     }
 
-    public void openGroupsPage() {
+ /*  public void openGroupsPage() {
         if (!manager.isElementPresent(By.name("new"))) {
             click(By.linkText("groups"));
         }
     }
-
+*//*
     public boolean isGroupPresent() {
         openGroupsPage();
         return manager.isElementPresent(By.name("selected[]"));
     }
-
-    public  void CreateGroup(GroupData group) {
+*/
+  /*  public  void CreateGroup(GroupData group) {
         openGroupsPage();
         initGroupCreation();
         click(By.xpath("//label[contains(.,\'Group name:\')]"));
@@ -29,6 +29,9 @@ public class GroupHelper extends HelperBase {
         //manager.driver.findElement(By.linkText("group page")).click();
         returnToGroupsPage();
     }
+
+
+
     public   void removeGroup() {
         openGroupsPage();
         selectGroup();
@@ -47,7 +50,7 @@ public class GroupHelper extends HelperBase {
         returnToGroupsPage();
 
     }
-
+*/
 
 
     private void submitGroupGreation() {

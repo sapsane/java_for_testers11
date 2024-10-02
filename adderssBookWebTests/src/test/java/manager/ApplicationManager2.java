@@ -9,7 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class ApplicationManager2 {
 
-    protected static WebDriver driver;
+    protected  WebDriver driver;
+    private loginHelper2 session2;
 
     public void init() {
         if (driver == null) {
@@ -17,12 +18,17 @@ public class ApplicationManager2 {
             Runtime.getRuntime().addShutdownHook(new Thread(driver::quit));
             driver.get("http://localhost/addressbook/");
             driver.manage().window().setSize(new Dimension(1806, 962));
-            driver.findElement(By.name("user")).sendKeys("admin");
-            driver.findElement(By.name("pass")).click();
-            driver.findElement(By.name("pass")).sendKeys("secret");
-            driver.findElement(By.xpath("//input[@value=\'Login\']")).click();
+            session2.login("admin", "seret");
         }
     }
+
+    public loginHelper2 session2(){
+        if( session2 == null){
+            session2 = new loginHelper2(this);
+        }
+        return session2;
+    }
+
 
     public boolean isElementPresent(By locator) {
       try{
