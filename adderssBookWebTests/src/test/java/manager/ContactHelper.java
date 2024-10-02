@@ -1,7 +1,7 @@
 package manager;
 
 import model.GroupData;
-import modelContact.ContactData2;
+import modelContact.ContactData;
 import org.openqa.selenium.By;
 
 public class ContactHelper extends HelperBase {
@@ -22,7 +22,7 @@ public class ContactHelper extends HelperBase {
         return manager.isElementPresent(By.name("selected[]"));
     }
 
-    public void CreateContact(ContactData2 contact) {
+    public void CreateContact(ContactData contact) {
         openContactsPage();
         initContactCreation();
         click(By.xpath("//body"));
