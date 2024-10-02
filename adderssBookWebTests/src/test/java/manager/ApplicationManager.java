@@ -5,6 +5,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class ApplicationManager {
     public static WebDriver driver;
@@ -13,26 +14,7 @@ public class ApplicationManager {
     private GroupHelper groups;
     private ContactHelper contacts;
 
-   /* public void init(String browser) {
-        if (driver == null) {
-            if ("firefox".equals(browser)) {
-                driver = new FirefoxDriver();
-            } else if ("chrome".equals(browser)){
-                    driver = new ChromeDriver();
-            } else {
-                throw new IllegalArgumentException(String.format("Unknown browser %s",browser));
-            }
 
-          //  driver = new ChromeDriver();
-            Runtime.getRuntime().addShutdownHook(new Thread(driver::quit));
-
-
-            driver.get("http://localhost/addressbook/");
-            driver.manage().window().setSize(new Dimension(1806, 962));
-            session().login("admin", "secret" );
-        }
-    }
-*/
     public loginHelper session(){
         if( session == null){
             session=new loginHelper(this);
@@ -54,23 +36,20 @@ public class ApplicationManager {
         return contacts;
     }
 
-   /* public boolean isElementPresent(By locator) {
-        try {
-            driver.findElement(locator);
-            return true;
-        } catch (NoSuchElementException exception) {
-            return false;
-        }
-    }
-*/
-   public void init() {
-        if (driver == null) {
-            driver = new ChromeDriver();
-            Runtime.getRuntime().addShutdownHook(new Thread(driver::quit));
 
+   public void init(String browser) {
+        if (driver == null) {
+         if ("firefox".equals(browser)) {
+                driver = new FirefoxDriver();
+            } else if ("chrome".equals(browser)){
+                    driver = new ChromeDriver();
+            } else {
+                throw new IllegalArgumentException(String.format("Unknown browser %s",browser));
+            }
+            Runtime.getRuntime().addShutdownHook(new Thread(driver::quit));
             driver.get("http://localhost/addressbook/");
             driver.manage().window().setSize(new Dimension(945, 979));
-            session().login("admin", "secret", this);
+            session().login("admin", "secret" );
 
         }
     }

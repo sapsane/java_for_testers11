@@ -8,7 +8,7 @@ public class GroupRemovalTests extends TestBase {
 
 
 
-/*
+
     @Test
     public void canRemoveGroup() {
 
@@ -18,5 +18,5 @@ public class GroupRemovalTests extends TestBase {
         app.groups().removeGroup();
 
     }
-*/
+
 }

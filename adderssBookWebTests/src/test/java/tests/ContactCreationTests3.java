@@ -32,7 +32,7 @@ public class ContactCreationTests3 extends TestBase {
     public void canCreateContactWithOnlyLastName() {
 
      //   app.contacts().openContactsPage();
-        app.contacts().CreateContact(new ContactData2().withLastName("Only lastname"));
+        app.contacts().CreateContact(new ContactData2().withLastName("Only last name"));
 
     }
 }

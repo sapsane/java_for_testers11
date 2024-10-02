@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class GroupModificationTests extends TestBase{
 
-/*
+
     @Test
     void canModifyGroup(){
         if (!app.groups().isGroupPresent()) {
@@ -15,5 +15,5 @@ public class GroupModificationTests extends TestBase{
         app.groups().modifyGroup(new GroupData().withName("modified name"));
     }
 
- */
+ 
 }

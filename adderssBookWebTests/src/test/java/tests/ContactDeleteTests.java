@@ -10,7 +10,6 @@ public class ContactDeleteTests extends TestBase {
 
     @Test
     public void canRemoveContact() {
-        //app.contacts().openContactsPage();
         if (!app.contacts().isContactPresent()) {
             ApplicationManager.driver.findElement(By.linkText("home")).click();
             app.contacts().CreateContact(new ContactData2("test", "test", "test", "test", "test", "test", "test", "test", "test"));
