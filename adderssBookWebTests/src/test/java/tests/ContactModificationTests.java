@@ -9,7 +9,7 @@ public class ContactModificationTests extends TestBase {
     @Test
     void canModifyContact(){
         if (!app.contacts().isContactPresent()) {
-            app.contacts().CreateContact(new ContactData().withLastName("Only lastname"));
+            app.contacts().createContact(new ContactData().withLastName("Only lastname"));
         }
 
         app.contacts().modifyContact(new GroupData().withName("modified name"));

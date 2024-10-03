@@ -4,9 +4,9 @@ import model.GroupData;
 import modelContact.ContactData;
 import org.openqa.selenium.By;
 
-public class ContactHelper extends HelperBase {
+public class contactHelper extends helperBase {
 
-    public ContactHelper (ApplicationManager manager) {
+    public contactHelper(ApplicationManager manager) {
         //this.manager=manager;
         super(manager);
     }
@@ -22,7 +22,7 @@ public class ContactHelper extends HelperBase {
         return manager.isElementPresent(By.name("selected[]"));
     }
 
-    public void CreateContact(ContactData contact) {
+    public void createContact(ContactData contact) {
         openContactsPage();
         initContactCreation();
         click(By.xpath("//body"));
@@ -42,7 +42,7 @@ public class ContactHelper extends HelperBase {
 
 
 
-    public void RemoveContact() {
+    public void removeContact() {
         openContactsPage();
         selectContact();
         removedSelectedContact();

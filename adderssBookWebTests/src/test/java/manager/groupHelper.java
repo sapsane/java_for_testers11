@@ -3,9 +3,9 @@ package manager;
 import model.GroupData;
 import org.openqa.selenium.By;
 
-public class GroupHelper extends HelperBase {
+public class groupHelper extends helperBase {
 
-    public GroupHelper (ApplicationManager manager)   {
+    public groupHelper(ApplicationManager manager)   {
         super(manager);
     }
 
@@ -20,7 +20,7 @@ public class GroupHelper extends HelperBase {
         return manager.isElementPresent(By.name("selected[]"));
     }
 
-    public  void CreateGroup(GroupData group) {
+    public  void createGroup(GroupData group) {
         openGroupsPage();
         initGroupCreation();
         click(By.xpath("//label[contains(.,\'Group name:\')]"));

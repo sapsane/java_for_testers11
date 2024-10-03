@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 
 
 
-public class loginHelper extends HelperBase {
+public class loginHelper extends helperBase {
 
 
 
