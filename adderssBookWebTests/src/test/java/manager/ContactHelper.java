@@ -4,9 +4,9 @@ import model.GroupData;
 import modelContact.ContactData;
 import org.openqa.selenium.By;
 
-public class contactHelper extends helperBase {
+public class ContactHelper extends HelperBase {
 
-    public contactHelper(ApplicationManager manager) {
+    public ContactHelper(ApplicationManager manager) {
         //this.manager=manager;
         super(manager);
     }

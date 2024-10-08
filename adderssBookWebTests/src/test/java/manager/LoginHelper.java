@@ -5,11 +5,11 @@ import org.openqa.selenium.By;
 
 
 
-public class loginHelper extends helperBase {
+public class LoginHelper extends HelperBase {
 
 
 
-    public loginHelper (ApplicationManager manager) {
+    public LoginHelper(ApplicationManager manager) {
         super(manager);
     }
 

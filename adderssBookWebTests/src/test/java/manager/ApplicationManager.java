@@ -10,28 +10,28 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class ApplicationManager {
     public static WebDriver driver;
   //  protected  WebDriver driver;
-    private loginHelper session;
-    private groupHelper groups;
-    private contactHelper contacts;
+    private LoginHelper session;
+    private GroupHelper groups;
+    private ContactHelper contacts;
 
 
-    public loginHelper session(){
+    public LoginHelper session(){
         if( session == null){
-            session=new loginHelper(this);
+            session=new LoginHelper(this);
         }
         return session;
     }
 
-    public groupHelper groups() {
+    public GroupHelper groups() {
         if (groups == null){
-            groups = new groupHelper(this);
+            groups = new GroupHelper(this);
         }
         return groups;
     }
 
-    public contactHelper contacts() {
+    public ContactHelper contacts() {
         if (contacts == null){
-            contacts = new contactHelper(this);
+            contacts = new ContactHelper(this);
         }
         return contacts;
     }
