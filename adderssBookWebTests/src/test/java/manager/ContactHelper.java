@@ -44,9 +44,9 @@ public class ContactHelper extends HelperBase {
     }
 
 
-    public void removeContact() {
+    public void removeContact(ContactData contact) {
         openContactsPage();
-        selectContact();
+        selectContact(contact);
         removedSelectedContact();
         returnToContactPage();
     }
@@ -67,7 +67,7 @@ public class ContactHelper extends HelperBase {
 
     public void modifyContact(GroupData modifiedContact) {
         openContactsPage();
-        selectContact();
+        selectContact(null);
         initContactModification();
         //fillContactForm(modifiedContact);
         submitContactModyfication();
@@ -87,8 +87,9 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("(//img[@alt=\'Edit\'])"));
     }
 
-    private void selectContact() {
-        click(By.name("selected[]"));
+    private void selectContact(ContactData contact) {
+      //  click(By.name("selected[]"));
+        click(By.cssSelector(String.format("input[value='%s']",contact.id())));
     }
 
     public int getCount() {
