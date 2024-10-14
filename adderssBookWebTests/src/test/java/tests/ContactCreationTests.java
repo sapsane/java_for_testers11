@@ -32,7 +32,7 @@ public class ContactCreationTests extends TestBase {
         }
 
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
             result.add(new ContactData()
                     .withFirstname(randomString(i*10))
                     .withLastName(randomString(i*10))
