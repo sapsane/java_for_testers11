@@ -28,17 +28,7 @@ public class ContactHelper extends HelperBase {
     public void createContact(ContactData contact) {
         openContactsPage();
         initContactCreation();
-        click(By.xpath("//body"));
-        type(By.name("firstname"), contact.firstname());
-        type(By.name("lastname"), contact.lastname());
-        type(By.name("address"), contact.address());
-        type(By.name("home"), contact.home());
-        type(By.name("mobile"), contact.mobile());
-        type(By.name("work"), contact.work());
-        type(By.name("email"), contact.email());
-        type(By.name("email2"), contact.email2());
-        type(By.name("email3"), contact.email3());
-
+        fillContactForm(contact);
         submitContactCreation();
         returnToContactPage();
     }
@@ -65,13 +55,26 @@ public class ContactHelper extends HelperBase {
         click(By.cssSelector(".left > input"));
     }
 
-    public void modifyContact(GroupData modifiedContact) {
+    public void modifyContact(ContactData contact,ContactData modifiedContact) {
         openContactsPage();
-        selectContact(null);
+        selectContact(contact);
         initContactModification();
-        //fillContactForm(modifiedContact);
+        fillContactForm(modifiedContact);
         submitContactModyfication();
         returnToContactPage();
+    }
+
+    private void fillContactForm(ContactData modifiedContact) {
+        click(By.xpath("//body"));
+        type(By.name("firstname"), modifiedContact.firstname());
+        type(By.name("lastname"), modifiedContact.lastname());
+        type(By.name("address"), modifiedContact.address());
+        type(By.name("home"), modifiedContact.home());
+        type(By.name("mobile"), modifiedContact.mobile());
+        type(By.name("work"), modifiedContact.work());
+        type(By.name("email"), modifiedContact.email());
+        type(By.name("email2"), modifiedContact.email2());
+        type(By.name("email3"), modifiedContact.email3());
     }
 
     private void returnToContactPage() {
