@@ -101,6 +101,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public List<ContactData> getList() {
+        openContactsPage();
         var contacts = new ArrayList<ContactData>();
         var row = manager.driver.findElements(By.cssSelector("tr"));
         for (var row2 : row) {
