@@ -108,20 +108,20 @@ public class ContactHelper extends HelperBase {
             var cells = row2.findElements(By.tagName("td"));
             if (!(cells.size()== 0)) {
 
-                var array = new String[8];
+                var array = new ArrayList<String>();
                 var i = 0;
                 for (var cels2 : cells) {
-                    array[i] = cels2.getText();
+                    array.add(cels2.getText());
                     if (i == 0) {
                         var checkBox = cels2.findElement(By.name("selected[]"));
-                        array[0] = checkBox.getAttribute("value");
+                        array.set(0, checkBox.getAttribute("value"));
 
                     }
                     i = i + 1;
                 }
-                var id = array[0];
-                var lastname = array[1];
-                var firstname = array[2];
+                var id = array.get(0);
+                var lastname = array.get(1);
+                var firstname = array.get(2);
                 contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastName(lastname));
             }
         }
