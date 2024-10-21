@@ -58,7 +58,7 @@ public class ContactHelper extends HelperBase {
     public void modifyContact(ContactData contact,ContactData modifiedContact) {
         openContactsPage();
         selectContact(contact);
-        initContactModification();
+        initContactModification(contact);
         fillContactForm(modifiedContact);
         submitContactModyfication();
         returnToContactPage();
@@ -86,8 +86,8 @@ public class ContactHelper extends HelperBase {
     }
 
 
-    private void initContactModification() {
-        click(By.xpath("(//img[@alt=\'Edit\'])"));
+    private void initContactModification(ContactData contact) {
+        click(By.cssSelector(String.format("[href='edit.php?id=%s']",contact.id())));
     }
 
     private void selectContact(ContactData contact) {
@@ -110,15 +110,11 @@ public class ContactHelper extends HelperBase {
 
                 var array = new String[8];
                 var i = 0;
-
-
                 for (var cels2 : cells) {
                     array[i] = cels2.getText();
-                    var test = cels2.getText();
-                    var test2 = cels2.getText();
                     if (i == 0) {
                         var checkBox = cels2.findElement(By.name("selected[]"));
-                        array[i] = checkBox.getAttribute("value");
+                        array[0] = checkBox.getAttribute("value");
 
                     }
                     i = i + 1;
@@ -128,11 +124,6 @@ public class ContactHelper extends HelperBase {
                 var firstname = array[2];
                 contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastName(lastname));
             }
-
-
-            //  var checkBox = td.findElement(By.name("selected[]"));
-            //  var id = checkBox.getAttribute("value");
-            //  contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastName(lastname));
         }
         return contacts;
     }
