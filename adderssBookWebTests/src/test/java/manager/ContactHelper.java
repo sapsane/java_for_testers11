@@ -107,21 +107,10 @@ public class ContactHelper extends HelperBase {
         for (var row2 : row) {
             var cells = row2.findElements(By.tagName("td"));
             if (!(cells.size()== 0)) {
-
-                var array = new ArrayList<String>();
-                var i = 0;
-                for (var cels2 : cells) {
-                    array.add(cels2.getText());
-                    if (i == 0) {
-                        var checkBox = cels2.findElement(By.name("selected[]"));
-                        array.set(0, checkBox.getAttribute("value"));
-
-                    }
-                    i = i + 1;
-                }
-                var id = array.get(0);
-                var lastname = array.get(1);
-                var firstname = array.get(2);
+                var checkBox = cells.get(0).findElement(By.name("selected[]"));
+                var id  = checkBox.getAttribute("value");
+                var lastname = cells.get(1).getText();
+                var firstname = cells.get(2).getText();
                 contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastName(lastname));
             }
         }
