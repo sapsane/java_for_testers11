@@ -1,7 +1,6 @@
-package tests;
+package ru.stqa.addressbook.tests;
 
-import model.GroupData;
-import modelContact.ContactData;
+import ru.stqa.addressbook.modelContact.ContactData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

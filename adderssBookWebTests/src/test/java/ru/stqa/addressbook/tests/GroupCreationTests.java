@@ -1,9 +1,15 @@
-package tests;
+package ru.stqa.addressbook.tests;
 
-import model.GroupData;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import ru.stqa.addressbook.common.CommonFunctions;
+import ru.stqa.addressbook.model.GroupData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -11,26 +17,29 @@ import java.util.List;
 public class GroupCreationTests extends TestBase {
 
 
-    public static List<GroupData> groupProvider() {
+    public static List<GroupData> groupProvider() throws IOException {
         var result= new ArrayList<GroupData>();
                // new GroupData(),
               //  new GroupData().withName("Test some"),
               //  new GroupData("Group1 name","",""),
              //   new GroupData("Group2 name'","","")));
-        for(var name : List.of("","Group1 name")){
-            for(var header : List.of("","header name1")){
-                for (var footer : List.of("","footer name1")){
-                    result.add(new GroupData().withName(name).withHeader(header).withFooter(footer));
-                }
-            }
-        }
+//        for(var name : List.of("","Group1 name")){
+//            for(var header : List.of("","header name1")){
+//                for (var footer : List.of("","footer name1")){
+//                    result.add(new GroupData().withName(name).withHeader(header).withFooter(footer));
+//                }
+//            }
+//        }
 
-        for(int i=0; i<5; i++){
-            result.add(new GroupData()
-                    .withName(randomString(i*10))
-                    .withHeader(randomString(i*10))
-                    .withFooter(randomString(i*10)) );
-        }
+//        for(int i=0; i<5; i++){
+//            result.add(new GroupData()
+//                    .withName(CommonFunctions.randomString(i*10))
+//                    .withHeader(CommonFunctions.randomString(i*10))
+//                    .withFooter(CommonFunctions.randomString(i*10)) );
+//        }
+        ObjectMapper mapper = new ObjectMapper();
+        var value = mapper.readValue(new File("groups.json"), new TypeReference<List<GroupData>>() {});
+        result.addAll(value);
         return result;
     }
 

@@ -1,12 +1,10 @@
-package tests;
+package ru.stqa.addressbook.tests;
 
-import modelContact.ContactData;
-import org.checkerframework.framework.qual.DefaultQualifier;
+import ru.stqa.addressbook.modelContact.ContactData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class ContactDeleteTests extends TestBase {

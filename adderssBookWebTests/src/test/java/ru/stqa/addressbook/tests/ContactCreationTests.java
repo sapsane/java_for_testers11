@@ -1,10 +1,16 @@
-package tests;
+package ru.stqa.addressbook.tests;
 
-import modelContact.ContactData;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import ru.stqa.addressbook.common.CommonFunctions;
+import ru.stqa.addressbook.model.GroupData;
+import ru.stqa.addressbook.modelContact.ContactData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -12,39 +18,44 @@ import java.util.List;
 public class ContactCreationTests extends TestBase {
 
 
-    public static List<ContactData> contactProvider() {
+    public static List<ContactData> contactProvider() throws IOException {
         var result = new ArrayList<ContactData>();
 
 
-        for (var firstname : List.of("","First Name1") ){
-            for (var lastname : List.of("","lastname")){
-                for (var address : List.of("","address")) {
-                    result.add(new ContactData().withFirstname(firstname)
-                                .withLastName(lastname)
-                                .withAddress(address)
-                                .withHome("home")
-                                .withMobile("mobile")
-                                .withWork("work")
-                                .withEmail("email")
-                                .withEmail2("email2")
-                                .withEmail3("email3"));
-                }
-            }
-        }
+//        for (var firstname : List.of("","First Name1") ){
+//            for (var lastname : List.of("","lastname")){
+//                for (var address : List.of("","address")) {
+//                    result.add(new ContactData().withFirstname(firstname)
+//                                .withLastName(lastname)
+//                                .withAddress(address)
+//                                .withHome("home")
+//                                .withMobile("mobile")
+//                                .withWork("work")
+//                                .withEmail("email")
+//                                .withEmail2("email2")
+//                                .withEmail3("email3"));
+//                }
+//            }
+//        }
 
 
-        for (int i = 0; i < 3; i++) {
-            result.add(new ContactData()
-                    .withFirstname(randomString(i*10))
-                    .withLastName(randomString(i*10))
-                    .withAddress(randomString(i*10))
-                    .withHome(randomString(i*10))
-                    .withMobile(randomString(i*10))
-                    .withWork(randomString(i*10))
-                    .withEmail(randomString(i*10))
-                    .withEmail2(randomString(i*10))
-                    .withEmail3(randomString(i*10)) );
-        }
+//        for (int i = 0; i < 3; i++) {
+//            result.add(new ContactData()
+//                    .withFirstname(CommonFunctions.randomString(i*10))
+//                    .withLastName(CommonFunctions.randomString(i*10))
+//                    .withAddress(CommonFunctions.randomString(i*10))
+//                    .withHome(CommonFunctions.randomString(i*10))
+//                    .withMobile(CommonFunctions.randomString(i*10))
+//                    .withWork(CommonFunctions.randomString(i*10))
+//                    .withEmail(CommonFunctions.randomString(i*10))
+//                    .withEmail2(CommonFunctions.randomString(i*10))
+//                    .withEmail3(CommonFunctions.randomString(i*10)) );
+//        }
+
+        ObjectMapper mapper = new ObjectMapper();
+        var value = mapper.readValue(new File("contacts.json"), new TypeReference<List<ContactData>>() {});
+        result.addAll(value);
+
         return result;
     }
 
