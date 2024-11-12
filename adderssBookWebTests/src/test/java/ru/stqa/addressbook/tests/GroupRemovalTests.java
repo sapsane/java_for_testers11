@@ -16,11 +16,11 @@ public class GroupRemovalTests extends TestBase {
             app.groups().createGroup(new GroupData("", "group name", "group header", "Group footer"));
         }
      //   int groupCount = app.groups().getCount();
-        var oldGroups = app.groups().getList();
+        var oldGroups = app.jdbc().getGroupList();
         var rnd = new Random();
         var index = rnd.nextInt(oldGroups.size());
         app.groups().removeGroup(oldGroups.get(index));
-        var newGroups = app.groups().getList();
+        var newGroups = app.jdbc().getGroupList();
         var expectedList = new ArrayList<>(oldGroups);
         expectedList.remove(index);
        // int newGroupCount = app.groups().getCount();
