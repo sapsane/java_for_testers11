@@ -142,9 +142,9 @@ public class ContactCreationTests extends TestBase {
     public void canNotCreateContact(ContactData contact ) {
 
 
-        var oldContacts = app.contacts().getList();
+        var oldContacts =  app.hbm().getContactList();
         app.contacts().createContact(contact);
-        var newContacts = app.contacts().getList();
+        var newContacts =  app.hbm().getContactList();
         Assertions.assertEquals(newContacts,oldContacts);
 
 

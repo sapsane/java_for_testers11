@@ -4,6 +4,8 @@ package ru.stqa.addressbook.manager;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.cfg.Configuration;
+import ru.stqa.addressbook.manager.hbm.ContactRecord;
+import ru.stqa.addressbook.manager.hbm.GroupRecord;
 import ru.stqa.addressbook.model.GroupData;
 import ru.stqa.addressbook.modelContact.ContactData;
 
@@ -18,7 +20,7 @@ public class HibernateHelper extends HelperBase {
     public HibernateHelper(ApplicationManager manager)   {
         super(manager);
         sessionFactory = new Configuration()
-                //    .addAnnotatedClass(Book.class)
+                .addAnnotatedClass(ContactRecord.class)
                 .addAnnotatedClass(GroupRecord.class)
                 .setProperty(AvailableSettings.URL, "jdbc:mysql://localhost/addressbook")
                 .setProperty(AvailableSettings.USER, "root")
@@ -34,6 +36,14 @@ public class HibernateHelper extends HelperBase {
         return result;
     }
 
+
+    private static GroupRecord convertGroups(GroupData data) {
+        var id = data.id();
+        if ("".equals(id)){
+            id="0";
+        }
+        return new GroupRecord(Integer.parseInt(id), data.name(), data.header(), data.footer());
+    }
 
     private static GroupData convertGroups(GroupRecord record) {
         return new GroupData("" + record.id, record.name, record.header, record.footer);
@@ -57,7 +67,15 @@ public class HibernateHelper extends HelperBase {
     }
 
     private static ContactData convertContacts(ContactRecord record) {
-        return new ContactData("" + record.id, record.firstname, record.lastname, record.address, record.home, record.mobile, record.work, record.email, record.company, record.email3);
+        return new ContactData("" + record.id, record.firstname, record.lastname, record.address, record.home, record.mobile, record.work, record.email, record.email2, record.email3);
+    }
+
+    private static ContactRecord convertContacts(ContactData data) {
+        var id = data.id();
+        if ("".equals(id)){
+            id="0";
+        }
+        return new ContactRecord( Integer.parseInt(id), data.firstname(), data.lastname(), data.address(), data.home(), data.mobile(), data.work(), data.email(), data.email2(), data.email3());
     }
 
 
@@ -69,6 +87,33 @@ public class HibernateHelper extends HelperBase {
     }
 
 
+    public long getGroupCount() {
+        return sessionFactory.fromSession (session -> {
+            return session.createQuery("select count(*) from GroupRecord", Long.class).getSingleResult();
+        });
+    }
+
+    public void createGroup(GroupData groupData) {
+        sessionFactory.inSession(session -> {
+            session.getTransaction().begin();
+            session.persist(convertGroups(groupData));
+            session.getTransaction().commit();
+        });
+    }
+
+    public Long getContactCount() {
+        return sessionFactory.fromSession (session -> {
+            return session.createQuery("select count(*) from ContactRecord", Long.class).getSingleResult();
+        });
+    }
+
+    public void createContact(ContactData contactData) {
+        sessionFactory.inSession(session -> {
+            session.getTransaction().begin();
+            session.persist(convertContacts(contactData));
+            session.getTransaction().commit();
+        });
+    }
 }
 
 
