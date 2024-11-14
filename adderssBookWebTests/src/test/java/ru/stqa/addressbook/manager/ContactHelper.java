@@ -18,6 +18,11 @@ public class ContactHelper extends HelperBase {
             click(By.linkText("home"));
         }
     }
+    public void openContactsPage2() {
+
+            click(By.linkText("home"));
+
+    }
 
     public boolean isContactPresent() {
         openContactsPage();

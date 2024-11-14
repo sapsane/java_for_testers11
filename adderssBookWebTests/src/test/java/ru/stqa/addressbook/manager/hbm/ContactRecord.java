@@ -65,7 +65,7 @@ public class ContactRecord {
     public String address2="0";
     public String phone2="0";
     public String notes="0";
-    public Date deprecated = new Date();
+
 
 
     public ContactRecord(){
