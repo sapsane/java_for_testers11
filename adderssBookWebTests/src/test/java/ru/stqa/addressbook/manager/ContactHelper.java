@@ -1,5 +1,8 @@
 package ru.stqa.addressbook.manager;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import ru.stqa.addressbook.model.GroupData;
 import ru.stqa.addressbook.modelContact.ContactData;
 import org.openqa.selenium.By;
 
@@ -122,6 +125,21 @@ public class ContactHelper extends HelperBase {
     }
 
 
+    public void contactsAddToGroup(ContactData contact, GroupData group) {
+        openContactsPage();
+        selectContact(contact);
+        click(By.name("to_group"));
+        selectGroup(group);
+        click(By.name("add"));
+
+
+
+
+    }
+
+    private void selectGroup(GroupData group) {
+       new Select( manager.driver.findElement(By.name("to_group"))).selectByValue(group.id());
+    }
 }
 
 

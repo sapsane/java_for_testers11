@@ -12,7 +12,7 @@ public class GroupHelper extends HelperBase {
         super(manager);
     }
 
-   public void openGroupsPage() {
+    public void openGroupsPage() {
         if (!manager.isElementPresent(By.name("new"))) {
             click(By.linkText("groups"));
         }

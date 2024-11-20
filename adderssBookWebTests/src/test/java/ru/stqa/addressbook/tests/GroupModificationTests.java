@@ -15,6 +15,7 @@ public class GroupModificationTests extends TestBase{
     void canModifyGroup(){
         if (app.hbm().getGroupCount()==0) {
             app.hbm().createGroup(new GroupData("", "group name", "group header", "Group footer"));
+
         }
 
         var oldGroups = app.hbm().getGroupList();
