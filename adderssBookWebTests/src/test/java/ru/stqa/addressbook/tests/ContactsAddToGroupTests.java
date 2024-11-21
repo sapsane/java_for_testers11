@@ -31,16 +31,14 @@ public class ContactsAddToGroupTests extends TestBase{
     //      System.out.println("тестКонтакт contact="+contact);
         var group = app.hbm().getGroupList().get(0);
         var oldRelated = app.hbm().getContactsInGroup(group);
-          System.out.println("тест1 oldRelated="+oldRelated);
+    //      System.out.println("тест1 oldRelated="+oldRelated);
         app.contacts().openContactsPage2();
         app.contacts().contactsAddToGroup(contact, group);
         var newRelated = app.hbm().getContactsInGroup(group);
     //      System.out.println("тест2 newRelated="+newRelated);
         var expectedList = oldRelated;
-
-            expectedList.add(contact);
+        expectedList.add(contact);
             //      System.out.println("тест2 expectedList="+expectedList);
-
         Comparator<ContactData> compareById = (o1, o2) -> {
             return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
         };
