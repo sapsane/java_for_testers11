@@ -1,6 +1,5 @@
 package ru.stqa.addressbook.tests;
 
-import org.openqa.selenium.By;
 import ru.stqa.addressbook.modelContact.ContactData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -15,7 +14,7 @@ public class ContactDeleteTests extends TestBase {
     public void canRemoveContact() {
         if (app.hbm().getContactCount()==0) {
 
-            app.hbm().createContact(new ContactData("", "test", "test", "test", "test", "test", "test", "test", "test", "test"));
+            app.hbm().createContact(new ContactData("", "test", "test", "test", "test", "test", "test", "test", "test", "test", ""));
             app.contacts().openContactsPage2();
         }
 

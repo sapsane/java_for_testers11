@@ -67,7 +67,7 @@ public class HibernateHelper extends HelperBase {
     }
 
     private static ContactData convertContacts(ContactRecord record) {
-        return new ContactData("" + record.id, record.firstname, record.lastname, record.address, record.home, record.mobile, record.work, record.email, record.email2, record.email3);
+        return new ContactData("" + record.id, record.firstname, record.lastname, record.address, record.home, record.mobile, record.work, record.email, record.email2, record.email3, record.phone2);
     }
 
     private static ContactRecord convertContacts(ContactData data) {

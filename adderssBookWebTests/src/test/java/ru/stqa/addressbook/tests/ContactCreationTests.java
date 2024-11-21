@@ -3,7 +3,6 @@ package ru.stqa.addressbook.tests;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ru.stqa.addressbook.common.CommonFunctions;
-import ru.stqa.addressbook.model.GroupData;
 import ru.stqa.addressbook.modelContact.ContactData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -64,7 +63,7 @@ public class ContactCreationTests extends TestBase {
     public static List<ContactData> NegativecontactProvider() {
         var result = new ArrayList<ContactData>(List.of(
 
-                new ContactData("", "First Name2'","","","","","","","","")));
+                new ContactData("", "First Name2'","","","","","","","","", "")));
 
         return result;
     }

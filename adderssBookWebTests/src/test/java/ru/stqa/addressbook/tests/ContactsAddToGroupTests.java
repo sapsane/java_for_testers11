@@ -2,22 +2,17 @@ package ru.stqa.addressbook.tests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.stqa.addressbook.common.CommonFunctions;
-import ru.stqa.addressbook.manager.hbm.ContactRecord;
-import ru.stqa.addressbook.manager.hbm.GroupRecord;
 import ru.stqa.addressbook.model.GroupData;
 import ru.stqa.addressbook.modelContact.ContactData;
 
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Random;
 
 public class ContactsAddToGroupTests extends TestBase{
     @Test
     void canContactAddToGroup(){
 
         if (app.hbm().getContactCount()==0) {
-            app.hbm().createContact(new ContactData("", "AUTOtest", "AUTOtest", "test", "test", "test", "test", "test", "test", "test"));
+            app.hbm().createContact(new ContactData("", "AUTOtest", "AUTOtest", "test", "test", "test", "test", "test", "test", "test", ""));
             app.contacts().openContactsPage2();
         }
 
