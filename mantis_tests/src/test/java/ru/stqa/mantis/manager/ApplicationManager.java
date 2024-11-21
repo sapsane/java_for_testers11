@@ -22,7 +22,7 @@ public class ApplicationManager {
         this.properties=properties;
     }
 
-    public webdriver driver(){
+    public WebDriver driver(){
         if (driver==null){
 
             if ("firefox".equals(string)) {
