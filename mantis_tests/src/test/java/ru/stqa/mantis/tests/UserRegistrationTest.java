@@ -13,12 +13,12 @@ public class UserRegistrationTest extends TestBase{
     //void canUserRegisterTests(String username){
     void canUserRegisterTests ()    {
 
-       //var username= "user9";
-        var username = CommonFunctions.randomString(8);
+       var username= "user10";
+       // var username = CommonFunctions.randomString(8);
        // System.out.println("Имя пользователя= "+ username);
         var email1= String.format("%s@localhost",username);
         app.jamesCli().addUser(email1,"password");
-        // var email9= String.format("%s@localhost",username);
+
         //создать пользователя адресс на почтовом сервере (JamesHelper)
         //заполняем форму создания и отправляем (браузер)
         //получаем почту   (mailHelper)
@@ -35,7 +35,7 @@ public class UserRegistrationTest extends TestBase{
         Assertions.assertEquals(1,messages.size());
         System.out.println(messages);
         //удаляем письмо
-        app.mail().drain("user1@localhost","password");
+        app.mail().drain(email1,"password");
 
         //извлекаем ссылку из письма
 

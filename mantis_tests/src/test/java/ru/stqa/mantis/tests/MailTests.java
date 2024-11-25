@@ -9,14 +9,14 @@ import java.util.regex.Pattern;
 public class MailTests extends TestBase{
     @Test
     void canDrainInbox(){
-        app.mail().drain("user1@localhost","password");
+        app.mail().drain("user10@localhost","password");
     }
 
 
     @Test
     void canReceiveEmail(){
         //получаем почту
-        var messages=app.mail().receive("user1@localhost","password", Duration.ofSeconds(60));
+        var messages=app.mail().receive("user10@localhost","password", Duration.ofSeconds(60));
         Assertions.assertEquals(1,messages.size());
         System.out.println(messages);
     }
