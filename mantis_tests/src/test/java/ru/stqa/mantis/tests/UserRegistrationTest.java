@@ -13,8 +13,8 @@ public class UserRegistrationTest extends TestBase{
     //void canUserRegisterTests(String username){
     void canUserRegisterTests ()    {
 
-       var username= "user10";
-       // var username = CommonFunctions.randomString(8);
+      // var username= "user10";
+        var username = CommonFunctions.randomString(8);
        // System.out.println("Имя пользователя= "+ username);
         var email1= String.format("%s@localhost",username);
         app.jamesCli().addUser(email1,"password");
