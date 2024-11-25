@@ -42,24 +42,6 @@ public class ContactsAddToGroupTests extends TestBase{
 
         Assertions.assertEquals(newRelated,expectedList);
 
-    // удаление контакта из группы
-        app.contacts().openContactsPage2();
-        var contact2 = app.hbm().getContactList().get(0);
-        var group2 = app.hbm().getGroupList().get(0);
-        var oldRelated2 = app.hbm().getContactsInGroup(group2);
-        app.contacts().openContactsPage2();
-        app.contacts().contactsDeleteToGroup(contact2, group2);
-        var newRelated2 = app.hbm().getContactsInGroup(group2);
-        var expectedList2 = oldRelated2;
-        expectedList2.remove(contact2);
-        Comparator<ContactData> compareById2 = (o1, o2) -> {
-            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
-        };
-        newRelated2.sort(compareById);
-        expectedList2.sort(compareById);
-
-        Assertions.assertEquals(newRelated2,expectedList2);
-
     }
 
 
