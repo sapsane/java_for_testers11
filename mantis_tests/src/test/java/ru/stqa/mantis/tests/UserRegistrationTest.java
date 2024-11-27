@@ -46,6 +46,8 @@ public class UserRegistrationTest extends TestBase{
             var url= text.substring(matcher.start(),matcher.end());
             System.out.println(url);
             app.registerBrowser().clickOnLink(url,username);
+        }else {
+            throw  new RuntimeException("No mail");
         }
         app.http().login(username,"password");
         Assertions.assertTrue(app.http().isLoggedIn());
