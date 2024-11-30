@@ -11,6 +11,7 @@ public class ApplicationManager {
 
     public static WebDriver driver;
 
+
     private String string;
     private Properties properties;
     private SessionHelper SessionHelper;
@@ -19,6 +20,7 @@ public class ApplicationManager {
     private MailHelper mailHelper;
     private RegisterBrowser registerBrowser;
     private JamesApiHelper jamesApiHelper;
+    private RestApiHelper restApiHelper            ;
 
 
     public void init(String browser, Properties properties) {
@@ -93,6 +95,14 @@ public class ApplicationManager {
             registerBrowser= new RegisterBrowser(this);
         }
         return registerBrowser;
+    }
+
+    public RestApiHelper rest() {
+
+        if (restApiHelper==null){
+            restApiHelper= new RestApiHelper(this);
+        }
+        return restApiHelper;
     }
 
 

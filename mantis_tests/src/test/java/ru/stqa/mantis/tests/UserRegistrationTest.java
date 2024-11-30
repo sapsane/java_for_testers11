@@ -3,6 +3,7 @@ package ru.stqa.mantis.tests;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.stqa.mantis.common.CommonFunctions;
+import ru.stqa.mantis.model.CreateUserData;
 
 import java.time.Duration;
 import java.util.regex.Pattern;
@@ -17,8 +18,6 @@ public class UserRegistrationTest extends TestBase{
         var username = CommonFunctions.randomString(8);
        // System.out.println("Имя пользователя= "+ username);
         var email1= String.format("%s@localhost",username);
-        app.jamesApi().addUser(email1,"password");
-
         //создать пользователя адресс на почтовом сервере (JamesHelper)
         //заполняем форму создания и отправляем (браузер)
         //получаем почту   (mailHelper)
@@ -26,9 +25,18 @@ public class UserRegistrationTest extends TestBase{
         //проходим по ссылке и завершаем регистрацию пользователя (браузер)
         //проверяем что пользователь может залогиниться (httpSessionHelper)
 
+        app.jamesApi().addUser(email1,"password");
 
-        //заполняем форму создания и отправляем (браузер)
-        app.registerBrowser().registrationWeb(username,email1);
+      //заполняем форму создания и отправляем (браузер)
+      //  app.registerBrowser().registrationWeb(username,email1);
+
+      //api регистрация пользователя
+
+        app.rest().createUser(new CreateUserData()
+                .withUsername(username)
+                .withEmail(email1)
+                .withPassword("password")
+                .withRealName(username));
 
         //получаем почту
         var messages=app.mail().receive(email1,"password", Duration.ofSeconds(120));
@@ -57,11 +65,5 @@ public class UserRegistrationTest extends TestBase{
 
 
       }
-
-
-
-
-
-
 
     }
