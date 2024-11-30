@@ -38,6 +38,7 @@ public class RegisterBrowser extends HelperBase {
         type(By.name("password_confirm"),"password");
 
         click(By.cssSelector("button[type='submit']"));
+        manager.driver().close();
     }
 
 }

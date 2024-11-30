@@ -18,12 +18,12 @@ public class UserRegistrationTest extends TestBase{
         var username = CommonFunctions.randomString(8);
        // System.out.println("Имя пользователя= "+ username);
         var email1= String.format("%s@localhost",username);
-        //создать пользователя адресс на почтовом сервере (JamesHelper)
-        //заполняем форму создания и отправляем (браузер)
-        //получаем почту   (mailHelper)
-        //извлекаем ссылку из письма
-        //проходим по ссылке и завершаем регистрацию пользователя (браузер)
-        //проверяем что пользователь может залогиниться (httpSessionHelper)
+        //1-создать пользователя адресс на почтовом сервере (JamesHelper)
+        //2-заполняем форму создания и отправляем (браузер)
+        //3-получаем почту   (mailHelper)
+        //4-извлекаем ссылку из письма
+        //5-проходим по ссылке и завершаем регистрацию пользователя (браузер)
+        //6-проверяем что пользователь может залогиниться (httpSessionHelper)
 
         app.jamesApi().addUser(email1,"password");
 
