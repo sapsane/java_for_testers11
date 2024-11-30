@@ -1,6 +1,7 @@
 package ru.stqa.mantis.manager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.mantis.tests.TestBase;
 
 public class RegisterBrowser extends HelperBase {
@@ -23,6 +24,9 @@ public class RegisterBrowser extends HelperBase {
     }
 
     public void clickOnLink(String link,String user){
+
+
+        manager.driver = new FirefoxDriver();
         manager.driver.get(link);
         click(By.name("realname"));
         type(By.name("realname"),user);
