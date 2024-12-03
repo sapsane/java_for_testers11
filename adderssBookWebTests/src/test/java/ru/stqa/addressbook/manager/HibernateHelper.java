@@ -1,6 +1,7 @@
 package ru.stqa.addressbook.manager;
 
 
+import io.qameta.allure.Step;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.cfg.Configuration;
@@ -48,7 +49,7 @@ public class HibernateHelper extends HelperBase {
     private static GroupData convertGroups(GroupRecord record) {
         return new GroupData("" + record.id, record.name, record.header, record.footer);
     }
-
+@Step
     public List<GroupData> getGroupList(){
         return convertListGroups(sessionFactory.fromSession (session -> {
             return session.createQuery("from GroupRecord", GroupRecord.class).list();
@@ -92,7 +93,7 @@ public class HibernateHelper extends HelperBase {
             return session.createQuery("select count(*) from GroupRecord", Long.class).getSingleResult();
         });
     }
-
+@Step
     public void createGroup(GroupData groupData) {
         sessionFactory.inSession(session -> {
             session.getTransaction().begin();
