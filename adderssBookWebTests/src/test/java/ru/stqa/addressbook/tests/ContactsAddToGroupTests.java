@@ -37,57 +37,62 @@ public class ContactsAddToGroupTests extends TestBase{
         ListContacts.sort(compareById);
         ListGroupContacts.sort(compareById);
 //если списки ListContacts ListGroupContacts равны групп и контактов
-        if(ListContacts.size()==ListGroupContacts.size()){
-    //создаем новый контакт
+        if(ListContacts.size()==ListGroupContacts.size()) {
+            //создаем новый контакт
 
             app.contacts().openContactsPage2();
             app.hbm().createContact(new ContactData("", "AUTOtestNew", "AUTOtestNEW", "test", "test", "test", "test", "test", "test", "test", ""));
             app.contacts().openContactsPage2();
-    //создали
-            // берем полный список контактов
-            var ListContactsNew = app.hbm().getContactList();
-            //берем группу №=0
-            var groupNew = app.hbm().getGroupList().get(0);
-            //берем список контактов в группе№=0
-            var ListGroupContactsNew = app.hbm().getContactsInGroup(groupNew);
-            //сортируем списки
-            Comparator<ContactData> compareById3 = (o1, o2) -> {
+            //создали
+        }
+        // берем полный список контактов
+        var ListContactsNew = app.hbm().getContactList();
+
+        //берем группу №=0
+        var groupNew = app.hbm().getGroupList().get(0);
+
+        //берем список контактов в группе№=0
+        var ListGroupContactsNew = app.hbm().getContactsInGroup(groupNew);
+        //сортируем списки
+        Comparator<ContactData> compareById3 = (o1, o2) -> {
+            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
+        };
+        ListContactsNew.sort(compareById3);
+        ListGroupContactsNew.sort(compareById3);
+
+
+
+
+        //добавляем новый контакт в группу
+        if(ListContactsNew.size()!=ListGroupContactsNew.size()){
+            //удаляем теперь из полного списка контактов нужно удалить те, которые входят в эту группу,
+            ListContactsNew.removeAll(ListGroupContactsNew);
+            var contactNew=ListContactsNew.get(0);
+            var oldRelated2 = app.hbm().getContactsInGroup(groupNew);
+            app.contacts().openContactsPage2();
+            //добавляем в группу
+            app.contacts().contactsAddToGroup(contactNew, groupNew);
+            var newRelated2 = app.hbm().getContactsInGroup(groupNew);
+
+
+
+            var expectedList = oldRelated2;
+            expectedList.add(contactNew);
+
+            Comparator<ContactData> compareById2 = (o1, o2) -> {
                 return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
             };
-            ListContactsNew.sort(compareById3);
-            ListGroupContactsNew.sort(compareById3);
+            newRelated2.sort(compareById2);
+            expectedList.sort(compareById2);
 
-    //добавляем новый контакт в группу
-            if(ListContactsNew.size()!=ListGroupContactsNew.size()){
-                //удаляем теперь из полного списка контактов нужно удалить те, которые входят в эту группу,
-                ListContactsNew.removeAll(ListGroupContactsNew);
-                var contactNew=ListContactsNew.get(0);
-                var oldRelated2 = app.hbm().getContactsInGroup(groupNew);
-                app.contacts().openContactsPage2();
-                //добавляем в группу
-                app.contacts().contactsAddToGroup(contactNew, groupNew);
-                var newRelated2 = app.hbm().getContactsInGroup(groupNew);
+            Assertions.assertEquals(newRelated2,expectedList);
 
 
-
-                var expectedList = oldRelated2;
-                expectedList.add(contactNew);
-
-                Comparator<ContactData> compareById2 = (o1, o2) -> {
-                    return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
-                };
-                newRelated2.sort(compareById2);
-                expectedList.sort(compareById2);
-
-                Assertions.assertEquals(newRelated2,expectedList);
+        }
 
 
-
-
-            }
-
-        } else{
-//если списки ListContacts ListGroupContacts не равны групп и контактов
+     /*
+            //если списки ListContacts ListGroupContacts не равны групп и контактов
             //удаляем теперь из полного списка контактов нужно удалить те, которые входят в эту группу,
 
             ListContacts.removeAll(ListGroupContacts);
@@ -113,8 +118,8 @@ public class ContactsAddToGroupTests extends TestBase{
 
             Assertions.assertEquals(newRelated,expectedList);
 
-        }
 
+        */
 
 
 
