@@ -64,7 +64,9 @@ public class ContactsAddToGroupTests extends TestBase{
 
 
         //добавляем новый контакт в группу
-        if(ListContactsNew.size()!=ListGroupContactsNew.size()){
+        if(ListContactsNew.size()==ListGroupContactsNew.size()){
+            throw  new RuntimeException("ERROR нет свободного контакта. Все контакты в группе");
+        }
             //удаляем теперь из полного списка контактов нужно удалить те, которые входят в эту группу,
             ListContactsNew.removeAll(ListGroupContactsNew);
             var contactNew=ListContactsNew.get(0);
@@ -88,7 +90,7 @@ public class ContactsAddToGroupTests extends TestBase{
             Assertions.assertEquals(newRelated2,expectedList);
 
 
-        }
+
 
 
      /*
